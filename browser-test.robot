@@ -16,5 +16,5 @@ GoToGoogle
     Open Browser    ${URL}  ${BROWSER}  options=add_experimental_option("detach", True)
     Maximize Browser Window
     Wait Until Page Contains    Google
-    Sleep   5
+    Sleep   3
     Close Browser
