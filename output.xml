@@ -1,45 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.8.16 on darwin)" generated="20230421 17:13:59.477" rpa="false" schemaversion="3">
-<suite id="s1" name="Accenture-Testing" source="/Users/allard/Desktop/accenture-testing">
-<suite id="s1-s1" name="Browser-Test" source="/Users/allard/Desktop/accenture-testing/browser-test.robot">
-<test id="s1-s1-t1" name="Open Test Website" line="10">
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230428 11:51:39.496" rpa="false" schemaversion="3">
+<suite id="s1" name="Automation-Testing" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing">
+<suite id="s1-s1" name="Job-Search" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing\job-search.robot">
+<test id="s1-s1-t1" name="Open Test Website" line="12">
 <kw name="GoToGoogle">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <arg>options=add_experimental_option("detach", True)</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230421 17:13:59.559" level="INFO">Opening browser 'Chrome' to base url 'https://google.com'.</msg>
-<status status="PASS" starttime="20230421 17:13:59.559" endtime="20230421 17:14:11.157"/>
+<msg timestamp="20230428 11:51:41.697" level="INFO">Opening browser 'Chrome' to base url 'https://google.com'.</msg>
+<msg timestamp="20230428 11:51:41.713" level="INFO">Executing: C:\Users\allard.quek\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --output json</msg>
+<status status="PASS" starttime="20230428 11:51:41.697" endtime="20230428 11:51:47.535"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230421 17:14:11.161" endtime="20230421 17:14:12.219"/>
+<status status="PASS" starttime="20230428 11:51:47.535" endtime="20230428 11:51:47.654"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
 <arg>Google</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20230421 17:14:12.219" endtime="20230421 17:14:12.618"/>
+<status status="PASS" starttime="20230428 11:51:47.654" endtime="20230428 11:51:47.669"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath://*[@id="APjFqb"]</arg>
+<arg>Amazon</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230428 11:51:47.669" level="INFO">Typing text 'Amazon' into text field 'xpath://*[@id="APjFqb"]'.</msg>
+<status status="PASS" starttime="20230428 11:51:47.669" endtime="20230428 11:51:47.814"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath:/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230428 11:51:47.815" level="INFO">Clicking button 'xpath:/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[1]'.</msg>
+<status status="PASS" starttime="20230428 11:51:47.814" endtime="20230428 11:51:54.786"/>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<arg>xpath://*[@id="APjFqb"]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" starttime="20230428 11:51:54.786" endtime="20230428 11:51:54.838"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath://*[@id="APjFqb"]</arg>
+<arg>Facebook</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230428 11:51:54.838" level="INFO">Typing text 'Facebook' into text field 'xpath://*[@id="APjFqb"]'.</msg>
+<status status="PASS" starttime="20230428 11:51:54.838" endtime="20230428 11:51:54.969"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
-<arg>5</arg>
+<arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230421 17:14:17.620" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20230421 17:14:12.618" endtime="20230421 17:14:17.626"/>
+<msg timestamp="20230428 11:51:56.970" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230428 11:51:54.970" endtime="20230428 11:51:56.970"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath://*[@id="tsf"]/div[1]/div[1]/div[2]/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230428 11:51:56.970" level="INFO">Clicking button 'xpath://*[@id="tsf"]/div[1]/div[1]/div[2]/button'.</msg>
+<status status="PASS" starttime="20230428 11:51:56.970" endtime="20230428 11:51:58.061"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230428 11:52:01.062" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230428 11:51:58.061" endtime="20230428 11:52:01.062"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230421 17:14:17.627" endtime="20230421 17:14:17.721"/>
+<status status="PASS" starttime="20230428 11:52:01.062" endtime="20230428 11:52:04.001"/>
 </kw>
-<status status="PASS" starttime="20230421 17:13:59.559" endtime="20230421 17:14:17.721"/>
+<status status="PASS" starttime="20230428 11:51:41.693" endtime="20230428 11:52:04.001"/>
 </kw>
 <doc>As a user I can open the home page</doc>
-<status status="PASS" starttime="20230421 17:13:59.559" endtime="20230421 17:14:17.721"/>
+<status status="PASS" starttime="20230428 11:51:41.693" endtime="20230428 11:52:04.001"/>
 </test>
 <doc>Simple example using SeleniumLibrary</doc>
-<status status="PASS" starttime="20230421 17:13:59.487" endtime="20230421 17:14:17.722"/>
+<status status="PASS" starttime="20230428 11:51:39.614" endtime="20230428 11:52:04.003"/>
 </suite>
-<status status="PASS" starttime="20230421 17:13:59.477" endtime="20230421 17:14:17.722"/>
+<status status="PASS" starttime="20230428 11:51:39.496" endtime="20230428 11:52:04.003"/>
 </suite>
 <statistics>
 <total>
@@ -48,8 +86,8 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Accenture-Testing">Accenture-Testing</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Browser-Test">Accenture-Testing.Browser-Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Automation-Testing">Automation-Testing</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Job-Search">Automation-Testing.Job-Search</stat>
 </suite>
 </statistics>
 <errors>
