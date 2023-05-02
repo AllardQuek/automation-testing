@@ -8,9 +8,11 @@ ${BROWSER}        Chrome
 
 *** Test Cases ***
 Log Page Title Test
-    [Documentation]     Print page title to log output
+    [Documentation]     Log page title to console
     ${pageTitle}    GoToWebsite     ${URL}  ${BROWSER}
     Log To Console    ${pageTitle}
+    Log     ${pageTitle}
+
 
 *** Keywords ***
 GoToWebsite

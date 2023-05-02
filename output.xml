@@ -1,88 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230502 14:19:22.207" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230502 14:22:09.308" rpa="false" schemaversion="3">
 <suite id="s1" name="Automation-Testing" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing">
 <suite id="s1-s1" name="Tests" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing\tests">
-<suite id="s1-s1-s1" name="Screenshot" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing\tests\screenshot.robot">
-<test id="s1-s1-s1-t1" name="Open Test Website" line="10">
-<kw name="GoToGoogle">
-<kw name="Open Browser" library="SeleniumLibrary">
+<suite id="s1-s1-s1" name="Return Value" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing\tests\return_value.robot">
+<test id="s1-s1-s1-t1" name="Log Page Title Test" line="10">
+<kw name="GoToWebsite">
+<var>${pageTitle}</var>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230502 14:19:23.974" level="INFO">Opening browser 'Chrome' to base url 'https://image.google.com'.</msg>
-<msg timestamp="20230502 14:19:23.983" level="INFO">Executing: C:\Users\allard.quek\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --output json</msg>
-<status status="PASS" starttime="20230502 14:19:23.974" endtime="20230502 14:19:30.166"/>
+<msg timestamp="20230502 14:22:11.537" level="INFO">Opening browser 'Chrome' to base url 'https://image.google.com'.</msg>
+<msg timestamp="20230502 14:22:11.568" level="INFO">Executing: C:\Users\allard.quek\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --output json</msg>
+<status status="PASS" starttime="20230502 14:22:11.537" endtime="20230502 14:22:17.738"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230502 14:19:30.167" endtime="20230502 14:19:30.288"/>
+<status status="PASS" starttime="20230502 14:22:17.738" endtime="20230502 14:22:17.865"/>
 </kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Google</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20230502 14:19:30.289" endtime="20230502 14:19:30.324"/>
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20230502 14:22:17.872" level="INFO">${title} = Google Images</msg>
+<status status="PASS" starttime="20230502 14:22:17.865" endtime="20230502 14:22:17.872"/>
 </kw>
-<status status="PASS" starttime="20230502 14:19:23.974" endtime="20230502 14:19:30.324"/>
+<msg timestamp="20230502 14:22:17.872" level="INFO">${pageTitle} = Google Images</msg>
+<status status="PASS" starttime="20230502 14:22:11.537" endtime="20230502 14:22:17.872"/>
 </kw>
-<kw name="QueryTerms">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>xpath://*[@id="APjFqb"]</arg>
-<arg>cats</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 14:19:30.327" level="INFO">Typing text 'cats' into text field 'xpath://*[@id="APjFqb"]'.</msg>
-<status status="PASS" starttime="20230502 14:19:30.326" endtime="20230502 14:19:30.453"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${pageTitle}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230502 14:22:17.872" endtime="20230502 14:22:17.873"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>1</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230502 14:19:31.454" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20230502 14:19:30.453" endtime="20230502 14:19:31.454"/>
+<kw name="Log" library="BuiltIn">
+<arg>${pageTitle}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230502 14:22:17.873" level="INFO">Google Images</msg>
+<status status="PASS" starttime="20230502 14:22:17.873" endtime="20230502 14:22:17.873"/>
 </kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>xpath:/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20230502 14:19:31.454" level="INFO">Clicking button 'xpath:/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/button'.</msg>
-<status status="PASS" starttime="20230502 14:19:31.454" endtime="20230502 14:19:35.950"/>
-</kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>cats</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20230502 14:19:35.950" endtime="20230502 14:19:35.982"/>
-</kw>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<arg>images/cats.png</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230502 14:19:36.575" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="images/cats.png"&gt;&lt;img src="images/cats.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230502 14:19:35.982" endtime="20230502 14:19:36.575"/>
-</kw>
-<kw name="Capture Element Screenshot" library="SeleniumLibrary">
-<arg>xpath://*[@id="islrg"]/div[1]/div[1]/a[1]/div[1]/img</arg>
-<arg>images/cat.png</arg>
-<doc>Captures a screenshot from the element identified by ``locator`` and embeds it into log file.</doc>
-<msg timestamp="20230502 14:19:36.788" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="images/cat.png"&gt;&lt;img src="images/cat.png" width="400px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230502 14:19:36.575" endtime="20230502 14:19:36.788"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230502 14:19:38.788" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20230502 14:19:36.788" endtime="20230502 14:19:38.788"/>
-</kw>
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230502 14:19:38.788" endtime="20230502 14:19:42.025"/>
-</kw>
-<status status="PASS" starttime="20230502 14:19:30.325" endtime="20230502 14:19:42.025"/>
-</kw>
-<doc>Take screenshots of search results</doc>
-<status status="PASS" starttime="20230502 14:19:23.974" endtime="20230502 14:19:42.025"/>
+<doc>Log page title to console</doc>
+<status status="PASS" starttime="20230502 14:22:11.537" endtime="20230502 14:22:17.874"/>
 </test>
 <doc>Simple example using SeleniumLibrary</doc>
-<status status="PASS" starttime="20230502 14:19:22.324" endtime="20230502 14:19:42.025"/>
+<status status="PASS" starttime="20230502 14:22:09.450" endtime="20230502 14:22:17.875"/>
 </suite>
-<status status="PASS" starttime="20230502 14:19:22.309" endtime="20230502 14:19:42.025"/>
+<status status="PASS" starttime="20230502 14:22:09.433" endtime="20230502 14:22:17.876"/>
 </suite>
-<status status="PASS" starttime="20230502 14:19:22.207" endtime="20230502 14:19:42.025"/>
+<status status="PASS" starttime="20230502 14:22:09.308" endtime="20230502 14:22:17.877"/>
 </suite>
 <statistics>
 <total>
@@ -93,7 +59,7 @@
 <suite>
 <stat pass="1" fail="0" skip="0" id="s1" name="Automation-Testing">Automation-Testing</stat>
 <stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Automation-Testing.Tests</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Screenshot">Automation-Testing.Tests.Screenshot</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Return Value">Automation-Testing.Tests.Return Value</stat>
 </suite>
 </statistics>
 <errors>
