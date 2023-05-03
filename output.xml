@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.8.16 on darwin)" generated="20230503 14:40:00.533" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.8.16 on darwin)" generated="20230503 15:28:07.949" rpa="false" schemaversion="3">
 <suite id="s1" name="Accenture-Testing" source="/Users/allard/Desktop/accenture-testing">
 <suite id="s1-s1" name="Tests" source="/Users/allard/Desktop/accenture-testing/tests">
 <suite id="s1-s1-s1" name="Db Connection" source="/Users/allard/Desktop/accenture-testing/tests/db_connection.robot">
@@ -12,58 +12,166 @@
 <arg>${DBPort}</arg>
 <doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
 connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
-<msg timestamp="20230503 14:40:00.645" level="INFO">Connecting using : psycopg2.connect(database=postgres, user=postgres, password=, host=127.0.0.1, port=5432) </msg>
-<status status="PASS" starttime="20230503 14:40:00.628" endtime="20230503 14:40:00.770"/>
+<msg timestamp="20230503 15:28:08.059" level="INFO">Connecting using : psycopg2.connect(database=postgres, user=postgres, password=, host=127.0.0.1, port=5432) </msg>
+<status status="PASS" starttime="20230503 15:28:08.043" endtime="20230503 15:28:08.088"/>
 </kw>
-<test id="s1-s1-s1-t1" name="Database Connection Test" line="19">
+<test id="s1-s1-s1-t1" name="Create Person Table" line="19">
 <kw name="Execute Sql String" library="DatabaseLibrary">
 <var>${output}</var>
-<arg>CREATE TABLE Person(id integer, first_name varchar(20), last_name varchar(20))</arg>
+<arg>CREATE TABLE IF NOT EXISTS Person(id integer, first_name varchar(20), last_name varchar(20));</arg>
 <doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
 True to run command without an explicit transaction commit or rollback.</doc>
-<msg timestamp="20230503 14:40:00.771" level="INFO">Executing : Execute SQL String  |  CREATE TABLE Person(id integer, first_name varchar(20), last_name varchar(20)) </msg>
-<msg timestamp="20230503 14:40:00.799" level="INFO">${output} = None</msg>
-<status status="PASS" starttime="20230503 14:40:00.771" endtime="20230503 14:40:00.799"/>
+<msg timestamp="20230503 15:28:08.089" level="INFO">Executing : Execute SQL String  |  CREATE TABLE IF NOT EXISTS Person(id integer, first_name varchar(20), last_name varchar(20)); </msg>
+<msg timestamp="20230503 15:28:08.091" level="INFO">${output} = None</msg>
+<status status="PASS" starttime="20230503 15:28:08.089" endtime="20230503 15:28:08.091"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>${output}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230503 14:40:00.799" endtime="20230503 14:40:00.799"/>
+<status status="PASS" starttime="20230503 15:28:08.091" endtime="20230503 15:28:08.091"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <arg>${output}</arg>
 <arg>None</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<msg timestamp="20230503 14:40:00.799" level="INFO">Argument types are:
+<msg timestamp="20230503 15:28:08.091" level="INFO">Argument types are:
 &lt;class 'NoneType'&gt;
 &lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20230503 14:40:00.799" endtime="20230503 14:40:00.799"/>
+<status status="PASS" starttime="20230503 15:28:08.091" endtime="20230503 15:28:08.091"/>
 </kw>
-<doc>Test connection to a database</doc>
-<status status="PASS" starttime="20230503 14:40:00.771" endtime="20230503 14:40:00.799"/>
+<doc>Test table creation</doc>
+<status status="PASS" starttime="20230503 15:28:08.089" endtime="20230503 15:28:08.091"/>
+</test>
+<test id="s1-s1-s1-t2" name="Insert Multiple Rows Into Person Table" line="25">
+<kw name="Execute Sql Script" library="DatabaseLibrary">
+<var>${output}</var>
+<arg>./data/users.sql</arg>
+<doc>Executes the content of the `sqlScriptFileName` as SQL commands. Useful for setting the database to a known
+state before running your tests, or clearing out your test data after running each a test. Set optional input
+`sansTran` to True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230503 15:28:08.092" level="INFO">Executing : Execute SQL Script  |  ./data/users.sql </msg>
+<msg timestamp="20230503 15:28:08.095" level="INFO">${output} = None</msg>
+<status status="PASS" starttime="20230503 15:28:08.092" endtime="20230503 15:28:08.095"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230503 15:28:08.095" endtime="20230503 15:28:08.095"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${output}</arg>
+<arg>None</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230503 15:28:08.096" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230503 15:28:08.095" endtime="20230503 15:28:08.096"/>
+</kw>
+<status status="PASS" starttime="20230503 15:28:08.092" endtime="20230503 15:28:08.096"/>
+</test>
+<test id="s1-s1-s1-t3" name="User Exists In Table - David" line="31">
+<kw name="Check If Exists In Database" library="DatabaseLibrary">
+<arg>SELECT id FROM Person WHERE first_name='David';</arg>
+<doc>Check if any row would be returned by given the input `selectStatement`. If there are no results, then this will
+throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction
+commit or rollback.</doc>
+<msg timestamp="20230503 15:28:08.096" level="INFO">Executing : Check If Exists In Database  |  SELECT id FROM Person WHERE first_name='David'; </msg>
+<msg timestamp="20230503 15:28:08.096" level="INFO">Executing : Query  |  SELECT id FROM Person WHERE first_name='David'; </msg>
+<status status="PASS" starttime="20230503 15:28:08.096" endtime="20230503 15:28:08.099"/>
+</kw>
+<status status="PASS" starttime="20230503 15:28:08.096" endtime="20230503 15:28:08.100"/>
+</test>
+<test id="s1-s1-s1-t4" name="Use Does Not Exist In Table - UnknownUser" line="34">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>SELECT id FROM Person WHERE first_name='UnknownUser';</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20230503 15:28:08.100" level="INFO">Executing : Check If Not Exists In Database  |  SELECT id FROM Person WHERE first_name='UnknownUser'; </msg>
+<msg timestamp="20230503 15:28:08.100" level="INFO">Executing : Query  |  SELECT id FROM Person WHERE first_name='UnknownUser'; </msg>
+<status status="PASS" starttime="20230503 15:28:08.100" endtime="20230503 15:28:08.101"/>
+</kw>
+<status status="PASS" starttime="20230503 15:28:08.100" endtime="20230503 15:28:08.101"/>
+</test>
+<test id="s1-s1-s1-t5" name="Person Table Exists" line="37">
+<kw name="Table Must Exist" library="DatabaseLibrary">
+<arg>person</arg>
+<doc>Check if the table given exists in the database. Set optional input `sansTran` to True to run command without an
+explicit transaction commit or rollback.</doc>
+<msg timestamp="20230503 15:28:08.101" level="INFO">Executing : Table Must Exist  |  person </msg>
+<msg timestamp="20230503 15:28:08.101" level="INFO">Executing : Row Count  |  SELECT * FROM information_schema.tables WHERE table_name='person' </msg>
+<status status="PASS" starttime="20230503 15:28:08.101" endtime="20230503 15:28:08.111"/>
+</kw>
+<status status="PASS" starttime="20230503 15:28:08.101" endtime="20230503 15:28:08.111"/>
+</test>
+<test id="s1-s1-s1-t6" name="No Rows For User Who Does Not Exist" line="41">
+<kw name="Row Count Is 0" library="DatabaseLibrary">
+<arg>SELECT * FROM Person WHERE first_name='UknownUser';</arg>
+<doc>Check if any rows are returned from the submitted `selectStatement`. If there are, then this will throw an
+AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction commit or
+rollback.</doc>
+<msg timestamp="20230503 15:28:08.112" level="INFO">Executing : Row Count Is 0  |  SELECT * FROM Person WHERE first_name='UknownUser'; </msg>
+<msg timestamp="20230503 15:28:08.112" level="INFO">Executing : Row Count  |  SELECT * FROM Person WHERE first_name='UknownUser'; </msg>
+<status status="PASS" starttime="20230503 15:28:08.112" endtime="20230503 15:28:08.112"/>
+</kw>
+<status status="PASS" starttime="20230503 15:28:08.111" endtime="20230503 15:28:08.112"/>
+</test>
+<test id="s1-s1-s1-t7" name="1 Row For Existing User" line="44">
+<kw name="Row Count Is Equal To X" library="DatabaseLibrary">
+<arg>SELECT * FROM Person WHERE first_name='David';</arg>
+<arg>1</arg>
+<doc>Check if the number of rows returned from `selectStatement` is equal to the value submitted. If not, then this
+will throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit
+transaction commit or rollback.</doc>
+<msg timestamp="20230503 15:28:08.113" level="INFO">Executing : Row Count Is Equal To X  |  SELECT * FROM Person WHERE first_name='David';  |  1 </msg>
+<msg timestamp="20230503 15:28:08.113" level="INFO">Executing : Row Count  |  SELECT * FROM Person WHERE first_name='David'; </msg>
+<status status="PASS" starttime="20230503 15:28:08.113" endtime="20230503 15:28:08.113"/>
+</kw>
+<status status="PASS" starttime="20230503 15:28:08.112" endtime="20230503 15:28:08.113"/>
+</test>
+<test id="s1-s1-s1-t8" name="Display Rows in Person Table" line="47">
+<kw name="Query" library="DatabaseLibrary">
+<var>@{queryResults}</var>
+<arg>SELECT * FROM Person;</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230503 15:28:08.113" level="INFO">Executing : Query  |  SELECT * FROM Person; </msg>
+<msg timestamp="20230503 15:28:08.114" level="INFO">@{queryResults} = [ (1, 'John', 'Doe') | (2, 'Jane', 'Doe') | (3, 'Mark', 'Smith') | (4, 'Sarah', 'Johnson') | (5, 'David', 'Lee') ]</msg>
+<status status="PASS" starttime="20230503 15:28:08.113" endtime="20230503 15:28:08.114"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>@{queryResults}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20230503 15:28:08.114" level="INFO">(1, 'John', 'Doe')</msg>
+<msg timestamp="20230503 15:28:08.114" level="INFO">(2, 'Jane', 'Doe')</msg>
+<msg timestamp="20230503 15:28:08.114" level="INFO">(3, 'Mark', 'Smith')</msg>
+<msg timestamp="20230503 15:28:08.114" level="INFO">(4, 'Sarah', 'Johnson')</msg>
+<msg timestamp="20230503 15:28:08.114" level="INFO">(5, 'David', 'Lee')</msg>
+<status status="PASS" starttime="20230503 15:28:08.114" endtime="20230503 15:28:08.114"/>
+</kw>
+<status status="PASS" starttime="20230503 15:28:08.113" endtime="20230503 15:28:08.114"/>
 </test>
 <kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
 <doc>Disconnects from the database.</doc>
-<msg timestamp="20230503 14:40:00.800" level="INFO">Executing : Disconnect From Database</msg>
-<status status="PASS" starttime="20230503 14:40:00.799" endtime="20230503 14:40:00.800"/>
+<msg timestamp="20230503 15:28:08.115" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20230503 15:28:08.115" endtime="20230503 15:28:08.115"/>
 </kw>
 <doc>Simple example using SeleniumLibrary</doc>
-<status status="PASS" starttime="20230503 14:40:00.543" endtime="20230503 14:40:00.800"/>
+<status status="PASS" starttime="20230503 15:28:07.959" endtime="20230503 15:28:08.115"/>
 </suite>
-<status status="PASS" starttime="20230503 14:40:00.542" endtime="20230503 14:40:00.800"/>
+<status status="PASS" starttime="20230503 15:28:07.959" endtime="20230503 15:28:08.115"/>
 </suite>
-<status status="PASS" starttime="20230503 14:40:00.534" endtime="20230503 14:40:00.800"/>
+<status status="PASS" starttime="20230503 15:28:07.950" endtime="20230503 15:28:08.115"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Accenture-Testing">Accenture-Testing</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Accenture-Testing.Tests</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Db Connection">Accenture-Testing.Tests.Db Connection</stat>
+<stat pass="8" fail="0" skip="0" id="s1" name="Accenture-Testing">Accenture-Testing</stat>
+<stat pass="8" fail="0" skip="0" id="s1-s1" name="Tests">Accenture-Testing.Tests</stat>
+<stat pass="8" fail="0" skip="0" id="s1-s1-s1" name="Db Connection">Accenture-Testing.Tests.Db Connection</stat>
 </suite>
 </statistics>
 <errors>
