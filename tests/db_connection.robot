@@ -8,8 +8,8 @@ Suite Teardown  Disconnect From Database
 
 *** Variables ***
 ${DBName}   postgres
-${DBUser}   root
-${DBPassword}   root
+${DBUser}   postgres
+${DBPassword}
 ${DBHost}   127.0.0.1
 ${DBPort}   5432
 ${URL}      https://image.google.com

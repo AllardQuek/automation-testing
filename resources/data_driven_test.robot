@@ -1,6 +1,6 @@
 *** Settings ***
 Library     SeleniumLibrary
-Resource    ../resources/resources.robot
+Resource    resources.robot
 Suite Setup     Open A Browser
 Suite Teardown    Close All Open Browsers
 Test Template    Invalid Login

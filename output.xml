@@ -1,286 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230502 20:14:05.129" rpa="false" schemaversion="3">
-<suite id="s1" name="Automation-Testing" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing">
-<suite id="s1-s1" name="Resources" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing\resources">
-<suite id="s1-s1-s1" name="Data Driven Test" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing\resources\data_driven_test.robot">
-<kw name="Open A Browser" library="resources" type="SETUP">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>${URL}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230502 20:14:09.464" level="INFO">Opening browser 'chrome' to base url 'https://admin-demo.nopcommerce.com/'.</msg>
-<msg timestamp="20230502 20:14:09.497" level="INFO">Executing: C:\Users\allard.quek\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --output json</msg>
-<status status="PASS" starttime="20230502 20:14:09.464" endtime="20230502 20:14:28.255"/>
+<robot generator="Robot 6.0.2 (Python 3.8.16 on darwin)" generated="20230503 14:40:00.533" rpa="false" schemaversion="3">
+<suite id="s1" name="Accenture-Testing" source="/Users/allard/Desktop/accenture-testing">
+<suite id="s1-s1" name="Tests" source="/Users/allard/Desktop/accenture-testing/tests">
+<suite id="s1-s1-s1" name="Db Connection" source="/Users/allard/Desktop/accenture-testing/tests/db_connection.robot">
+<kw name="Connect To Database" library="DatabaseLibrary" type="SETUP">
+<arg>psycopg2</arg>
+<arg>${DBName}</arg>
+<arg>${DBUser}</arg>
+<arg>${DBPassword}</arg>
+<arg>${DBHost}</arg>
+<arg>${DBPort}</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
+<msg timestamp="20230503 14:40:00.645" level="INFO">Connecting using : psycopg2.connect(database=postgres, user=postgres, password=, host=127.0.0.1, port=5432) </msg>
+<status status="PASS" starttime="20230503 14:40:00.628" endtime="20230503 14:40:00.770"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230502 20:14:28.255" endtime="20230502 20:14:28.415"/>
+<test id="s1-s1-s1-t1" name="Database Connection Test" line="19">
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${output}</var>
+<arg>CREATE TABLE Person(id integer, first_name varchar(20), last_name varchar(20))</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20230503 14:40:00.771" level="INFO">Executing : Execute SQL String  |  CREATE TABLE Person(id integer, first_name varchar(20), last_name varchar(20)) </msg>
+<msg timestamp="20230503 14:40:00.799" level="INFO">${output} = None</msg>
+<status status="PASS" starttime="20230503 14:40:00.771" endtime="20230503 14:40:00.799"/>
 </kw>
-<status status="PASS" starttime="20230502 20:14:09.464" endtime="20230502 20:14:28.415"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230503 14:40:00.799" endtime="20230503 14:40:00.799"/>
 </kw>
-<test id="s1-s1-s1-t1" name="Right Username Wrong Password" line="10">
-<kw name="Invalid Login">
-<arg>admin@yourstore.com</arg>
-<arg>wrong_password</arg>
-<kw name="Input Username" library="resources">
-<arg>${username}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Email</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:28.425" level="INFO">Typing text 'admin@yourstore.com' into text field 'id:Email'.</msg>
-<status status="PASS" starttime="20230502 20:14:28.419" endtime="20230502 20:14:28.760"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${output}</arg>
+<arg>None</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230503 14:40:00.799" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230503 14:40:00.799" endtime="20230503 14:40:00.799"/>
 </kw>
-<status status="PASS" starttime="20230502 20:14:28.419" endtime="20230502 20:14:28.760"/>
-</kw>
-<kw name="Input Password" library="resources">
-<arg>${password}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Password</arg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:28.766" level="INFO">Typing text 'wrong_password' into text field 'id:Password'.</msg>
-<status status="PASS" starttime="20230502 20:14:28.766" endtime="20230502 20:14:29.008"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:28.760" endtime="20230502 20:14:29.009"/>
-</kw>
-<kw name="Click Login Button" library="resources">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://button[normalize-space()='Log in']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:29.011" level="INFO">Clicking element 'xpath://button[normalize-space()='Log in']'.</msg>
-<status status="PASS" starttime="20230502 20:14:29.009" endtime="20230502 20:14:29.791"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:29.009" endtime="20230502 20:14:29.791"/>
-</kw>
-<kw name="Error Message Should Be Visible" library="resources">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Login was unsuccessful</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20230502 20:14:29.832" level="INFO">Current page contains text 'Login was unsuccessful'.</msg>
-<status status="PASS" starttime="20230502 20:14:29.791" endtime="20230502 20:14:29.832"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:29.791" endtime="20230502 20:14:29.832"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:28.419" endtime="20230502 20:14:29.832"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:28.415" endtime="20230502 20:14:29.832"/>
+<doc>Test connection to a database</doc>
+<status status="PASS" starttime="20230503 14:40:00.771" endtime="20230503 14:40:00.799"/>
 </test>
-<test id="s1-s1-s1-t2" name="Wrong Username Right Password" line="11">
-<kw name="Invalid Login">
-<arg>wrong_username</arg>
-<arg>admin</arg>
-<kw name="Input Username" library="resources">
-<arg>${username}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Email</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:29.840" level="INFO">Typing text 'wrong_username' into text field 'id:Email'.</msg>
-<status status="PASS" starttime="20230502 20:14:29.832" endtime="20230502 20:14:30.061"/>
+<kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.</doc>
+<msg timestamp="20230503 14:40:00.800" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20230503 14:40:00.799" endtime="20230503 14:40:00.800"/>
 </kw>
-<status status="PASS" starttime="20230502 20:14:29.832" endtime="20230502 20:14:30.061"/>
-</kw>
-<kw name="Input Password" library="resources">
-<arg>${password}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Password</arg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:30.061" level="INFO">Typing text 'admin' into text field 'id:Password'.</msg>
-<status status="PASS" starttime="20230502 20:14:30.061" endtime="20230502 20:14:30.279"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:30.061" endtime="20230502 20:14:30.279"/>
-</kw>
-<kw name="Click Login Button" library="resources">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://button[normalize-space()='Log in']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:30.279" level="INFO">Clicking element 'xpath://button[normalize-space()='Log in']'.</msg>
-<status status="PASS" starttime="20230502 20:14:30.279" endtime="20230502 20:14:30.387"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:30.279" endtime="20230502 20:14:30.387"/>
-</kw>
-<kw name="Error Message Should Be Visible" library="resources">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Login was unsuccessful</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20230502 20:14:30.404" level="INFO">Current page contains text 'Login was unsuccessful'.</msg>
-<status status="PASS" starttime="20230502 20:14:30.388" endtime="20230502 20:14:30.412"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:30.388" endtime="20230502 20:14:30.412"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:29.832" endtime="20230502 20:14:30.412"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:29.832" endtime="20230502 20:14:30.412"/>
-</test>
-<test id="s1-s1-s1-t3" name="Right Username Empty Password" line="12">
-<kw name="Invalid Login">
-<arg>admin@yourstore.com</arg>
-<arg>${EMPTY}</arg>
-<kw name="Input Username" library="resources">
-<arg>${username}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Email</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:30.418" level="INFO">Typing text 'admin@yourstore.com' into text field 'id:Email'.</msg>
-<status status="PASS" starttime="20230502 20:14:30.418" endtime="20230502 20:14:30.674"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:30.418" endtime="20230502 20:14:30.674"/>
-</kw>
-<kw name="Input Password" library="resources">
-<arg>${password}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Password</arg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:30.685" level="INFO">Typing text '' into text field 'id:Password'.</msg>
-<status status="PASS" starttime="20230502 20:14:30.685" endtime="20230502 20:14:30.822"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:30.674" endtime="20230502 20:14:30.822"/>
-</kw>
-<kw name="Click Login Button" library="resources">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://button[normalize-space()='Log in']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:30.822" level="INFO">Clicking element 'xpath://button[normalize-space()='Log in']'.</msg>
-<status status="PASS" starttime="20230502 20:14:30.822" endtime="20230502 20:14:31.340"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:30.822" endtime="20230502 20:14:31.340"/>
-</kw>
-<kw name="Error Message Should Be Visible" library="resources">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Login was unsuccessful</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20230502 20:14:31.360" level="INFO">Current page contains text 'Login was unsuccessful'.</msg>
-<status status="PASS" starttime="20230502 20:14:31.340" endtime="20230502 20:14:31.360"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.340" endtime="20230502 20:14:31.360"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:30.412" endtime="20230502 20:14:31.360"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:30.412" endtime="20230502 20:14:31.360"/>
-</test>
-<test id="s1-s1-s1-t4" name="Empty Username Right Password" line="13">
-<kw name="Invalid Login">
-<arg>${EMPTY}</arg>
-<arg>admin</arg>
-<kw name="Input Username" library="resources">
-<arg>${username}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Email</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:31.360" level="INFO">Typing text '' into text field 'id:Email'.</msg>
-<status status="PASS" starttime="20230502 20:14:31.360" endtime="20230502 20:14:31.540"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.360" endtime="20230502 20:14:31.541"/>
-</kw>
-<kw name="Input Password" library="resources">
-<arg>${password}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Password</arg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:31.544" level="INFO">Typing text 'admin' into text field 'id:Password'.</msg>
-<status status="PASS" starttime="20230502 20:14:31.542" endtime="20230502 20:14:31.706"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.541" endtime="20230502 20:14:31.706"/>
-</kw>
-<kw name="Click Login Button" library="resources">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://button[normalize-space()='Log in']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:31.706" level="INFO">Clicking element 'xpath://button[normalize-space()='Log in']'.</msg>
-<status status="PASS" starttime="20230502 20:14:31.706" endtime="20230502 20:14:31.812"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.706" endtime="20230502 20:14:31.812"/>
-</kw>
-<kw name="Error Message Should Be Visible" library="resources">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Login was unsuccessful</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20230502 20:14:31.832" level="INFO">Current page contains text 'Login was unsuccessful'.</msg>
-<status status="PASS" starttime="20230502 20:14:31.812" endtime="20230502 20:14:31.832"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.812" endtime="20230502 20:14:31.832"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.360" endtime="20230502 20:14:31.832"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.360" endtime="20230502 20:14:31.840"/>
-</test>
-<test id="s1-s1-s1-t5" name="Wrong Username Wrong Password" line="14">
-<kw name="Invalid Login">
-<arg>wrong_username</arg>
-<arg>wrong_password</arg>
-<kw name="Input Username" library="resources">
-<arg>${username}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Email</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:31.840" level="INFO">Typing text 'wrong_username' into text field 'id:Email'.</msg>
-<status status="PASS" starttime="20230502 20:14:31.840" endtime="20230502 20:14:32.002"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.840" endtime="20230502 20:14:32.003"/>
-</kw>
-<kw name="Input Password" library="resources">
-<arg>${password}</arg>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:Password</arg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:32.004" level="INFO">Typing text 'wrong_password' into text field 'id:Password'.</msg>
-<status status="PASS" starttime="20230502 20:14:32.004" endtime="20230502 20:14:32.157"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:32.003" endtime="20230502 20:14:32.157"/>
-</kw>
-<kw name="Click Login Button" library="resources">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://button[normalize-space()='Log in']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230502 20:14:32.157" level="INFO">Clicking element 'xpath://button[normalize-space()='Log in']'.</msg>
-<status status="PASS" starttime="20230502 20:14:32.157" endtime="20230502 20:14:32.224"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:32.157" endtime="20230502 20:14:32.224"/>
-</kw>
-<kw name="Error Message Should Be Visible" library="resources">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Login was unsuccessful</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20230502 20:14:32.244" level="INFO">Current page contains text 'Login was unsuccessful'.</msg>
-<status status="PASS" starttime="20230502 20:14:32.224" endtime="20230502 20:14:32.244"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:32.224" endtime="20230502 20:14:32.244"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.840" endtime="20230502 20:14:32.244"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:31.840" endtime="20230502 20:14:32.244"/>
-</test>
-<kw name="Close All Open Browsers" library="resources" type="TEARDOWN">
-<kw name="Close All Browsers" library="SeleniumLibrary">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20230502 20:14:32.252" endtime="20230502 20:14:39.699"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:32.252" endtime="20230502 20:14:39.700"/>
-</kw>
-<status status="PASS" starttime="20230502 20:14:05.381" endtime="20230502 20:14:39.700"/>
+<doc>Simple example using SeleniumLibrary</doc>
+<status status="PASS" starttime="20230503 14:40:00.543" endtime="20230503 14:40:00.800"/>
 </suite>
-<status status="PASS" starttime="20230502 20:14:05.365" endtime="20230502 20:14:39.700"/>
+<status status="PASS" starttime="20230503 14:40:00.542" endtime="20230503 14:40:00.800"/>
 </suite>
-<status status="PASS" starttime="20230502 20:14:05.144" endtime="20230502 20:14:39.700"/>
+<status status="PASS" starttime="20230503 14:40:00.534" endtime="20230503 14:40:00.800"/>
 </suite>
 <statistics>
 <total>
-<stat pass="5" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="5" fail="0" skip="0" id="s1" name="Automation-Testing">Automation-Testing</stat>
-<stat pass="5" fail="0" skip="0" id="s1-s1" name="Resources">Automation-Testing.Resources</stat>
-<stat pass="5" fail="0" skip="0" id="s1-s1-s1" name="Data Driven Test">Automation-Testing.Resources.Data Driven Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Accenture-Testing">Accenture-Testing</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Accenture-Testing.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Db Connection">Accenture-Testing.Tests.Db Connection</stat>
 </suite>
 </statistics>
 <errors>
