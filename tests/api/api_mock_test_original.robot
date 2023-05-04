@@ -9,8 +9,8 @@ Test Teardown  Reset Mock Server
 
 
 *** Variables ***
-${MOCK_URL}
-${ENDPOINT}  /endpoint
+${MOCK_URL}     https://jsonplaceholder.typicode.com
+${ENDPOINT}     /todos/1
 &{BODY}  var1=value1  var2=value2
 &{HEADERS}  Content-type=application/json  Cache-Control=max-age\=3600
 &{INPUT_HEADERS}  Content-type=application/json  Cache-Control=max-age\=3600  Length=0
