@@ -1,88 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.8.16 on darwin)" generated="20230503 16:17:50.922" rpa="false" schemaversion="3">
-<suite id="s1" name="Accenture-Testing" source="/Users/allard/Desktop/accenture-testing">
-<suite id="s1-s1" name="Tests" source="/Users/allard/Desktop/accenture-testing/tests">
-<suite id="s1-s1-s1" name="Api Sample Test" source="/Users/allard/Desktop/accenture-testing/tests/api_sample_test.robot">
-<test id="s1-s1-s1-t1" name="GET Request Test" line="13">
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230504 10:23:34.506" rpa="false" schemaversion="3">
+<suite id="s1" name="Automation-Testing" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing">
+<suite id="s1-s1" name="Tests" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing\tests">
+<suite id="s1-s1-s1" name="Api Sample Test" source="C:\Users\allard.quek\OneDrive - Accenture\Desktop\automation-testing\tests\api_sample_test.robot">
+<test id="s1-s1-s1-t1" name="GET Request Test" line="12">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>API_Testing</arg>
 <arg>${BASE_URL}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230503 16:17:51.067" level="INFO">Creating Session using : alias=API_Testing, url=https://thetestingworldapi.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230503 16:17:51.067" endtime="20230503 16:17:51.067"/>
+<msg timestamp="20230504 10:23:38.994" level="INFO">Creating Session using : alias=API_Testing, url=https://thetestingworldapi.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230504 10:23:38.994" endtime="20230504 10:23:38.995"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>API_Testing</arg>
-<arg>url=/api/studentsDetails/7470352</arg>
+<arg>url=/api/studentsDetails/</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230503 16:17:51.347" level="INFO">GET Request : url=https://thetestingworldapi.com/api/studentsDetails/7470352 
- path_url=/api/studentsDetails/7470352 
- headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+<msg timestamp="20230504 10:23:39.369" level="INFO">GET Request : url=https://thetestingworldapi.com/api/studentsDetails/ 
+ path_url=/api/studentsDetails/ 
+ headers={'User-Agent': 'python-requests/2.29.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20230503 16:17:51.347" level="INFO">GET Response : url=https://thetestingworldapi.com/api/studentsDetails/7470352 
+<msg timestamp="20230504 10:23:39.369" level="INFO">GET Response : url=https://thetestingworldapi.com/api/studentsDetails/ 
  status=200, reason=OK 
- headers={'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Content-Type': 'application/json; charset=utf-8', 'Expires': '-1', 'Server': 'Microsoft-IIS/10.0', 'X-AspNet-Version': '4.0.30319', 'X-Powered-By': 'ASP.NET', 'X-Powered-By-Plesk': 'PleskWin', 'Date': 'Wed, 03 May 2023 08:17:51 GMT', 'Content-Length': '131'} 
- body={"status":"true","data":{"id":7470352,"first_name":"Luis","middle_name":"Paredo","last_name":"Jared","date_of_birth":"01/05/1996"}} 
+ headers={'Cache-Control': 'no-cache', 'Content-Length': '11061', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Thu, 04 May 2023 02:23:37 GMT', 'Expires': '-1', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'X-Aspnet-Version': '4.0.30319', 'X-Powered-By': 'ASP.NET', 'X-Powered-By-Plesk': 'PleskWin'} 
+ body=[{"id":7470409,"first_name":"tưsting","middle_name":"a","last_name":"eorld","date_of_birth":"25/04/1990"},{"id":7470408,"first_name":"PulidoRodriguez","middle_name":"A","last_name":"World","date_of_birth":"12/12/2020"},{"id":7470405,"first_name":"PulidoRodriguez","middle_name":"A","last_name":"World","date_of_birth":"12/12/2020"},{"id":7470404,"first_name":"PulidoRodriguez","middle_name":"A","last_name":"World","date_of_birth":"12/12/2020"},{"id":7470403,"first_name":"PulidoRodriguez","middle_name":"A","last_name":"World","date_of_birth":"12/12/2020"},{"id":7470402,"first_name":"HolaJuan","middle_name":"A","last_name":"World","date_of_birth":"12/12/2020"},{"id":7470401,"first_name":"Mahtab","middle_name":"Khandoker","last_name":"Bishal","date_of_birth":"11/06/1996"},{"id":7470400,"first_name":"HolaJuan","middle_name":"A","last_name":"World","date_of_birth":"12/12/2020"},{"id":7470399,"first_name":"HolaJuan}","middle_name":"A","last_name":"World","date_of_birth":"12/12/2020"},{"id":7470398,"first_name":"HolaJuan}","middle_name":"A","last_name":"World","date_of_birth":"12/12/2020"},{"id":7470397,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470396,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470395,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470394,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470393,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470392,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470391,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470390,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470389,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470388,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470387,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470386,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470385,"first_name":"Bishal","middle_name":"J","last_name":"Erin","date_of_birth":"14/01/1996"},{"id":7470384,"first_name":"Emran","middle_name":"not applicable","last_name":"hossain","date_of_birth":"17-06-1990"},{"id":7470383,"first_name":"JuanCarlos","middle_name":"Pulido","last_name":null,"date_of_birth":"11/10/1990"},{"id":7470382,"first_name":"testing","middle_name":"A","last_name":"Hello","date_of_birth":"12/12/1994"},{"id":7470380,"first_name":"testing","middle_name":"A","last_name":"Hello","date_of_birth":"12/12/1994"},{"id":7470379,"first_name":"Hello","middle_name":"A","last_name":"Hello","date_of_birth":"12/12/1994"},{"id":7470378,"first_name":"Habibi","middle_name":"soussou","last_name":"Assawer","date_of_birth":"2000"},{"id":7470377,"first_name":"sample string 2","middle_name":"sample string 3","last_name":"sample string 4","date_of_birth":"sample string 5"},{"id":7470375,"first_name":"Habibi","middle_name":"soussou","last_name":"Assawer","date_of_birth":"2000"},{"id":7470374,"first_name":"Habibi","middle_name":"soussou","last_name":"Assawer","date_of_birth":"2000"},{"id":7470373,"first_name":"Habibi","middle_name":"soussou","last_name":"Assawer","date_of_birth":"2000"},{"id":7470372,"first_name":"Habibi","middle_name":"soussou","last_name":"Assawer","date_of_birth":"2000"},{"id":7470371,"first_name":"Habibi","middle_name":"soussou","last_name":"Assawer","date_of_birth":"2000"},{"id":7470370,"first_name":"Habibi","middle_name":"soussou","last_name":"Assawer","date_of_birth":"2000"},{"id":7470369,"first_name":"rabah","middle_name":"lay","last_name":"laihem","date_of_birth":"2020"},{"id":7470368,"first_name":"sample string 2","middle_name":"sample string 3","last_name":"sample string 4","date_of_birth":"sample string 5"},{"id":7470367,"first_name":"sample string 2","middle_name":"sample string 3","last_name":"sample string 4","date_of_birth":"sample string 5"},{"id":7470366,"first_name":"sample string 2","middle_name":"sample string 3","last_name":"sample string 4","date_of_birth":"sample string 5"},{"id":7470365,"first_name":"Priyanka","middle_name":"K","last_name":"Prakash","date_of_birth":"10/05/1995"},{"id":7470363,"first_name":"Fishbone","middle_name":"Luis","last_name":"Srista","date_of_birth":"01/05/1986"},{"id":7470361,"first_name":"Andrea","middle_name":"Luis","last_name":"Acosta","date_of_birth":"01/05/1992"},{"id":7470360,"first_name":"Andrea","middle_name":"Luis","last_name":"Acosta","date_of_birth":"01/05/1992"},{"id":7470359,"first_name":"Andrea","middle_name":"Luis","last_name":"Acosta","date_of_birth":"01/05/1992"},{"id":7470358,"first_name":"Andrea","middle_name":"Luis","last_name":"Acosta","date_of_birth":"01/05/1992"},{"id":7470357,"first_name":"Andrea","middle_name":"Luis","last_name":"Acosta","date_of_birth":"01/05/1992"},{"id":7470356,"first_name":"Andrea","middle_name":"Luis","last_name":"Acosta","date_of_birth":"01/05/1992"},{"id":7470355,"first_name":"Andrea","middle_name":"Luis","last_name":"Acosta","date_of_birth":"01/05/1992"},{"id":7470354,"first_name":"Shannon","middle_name":"Luis","last_name":"Lee","date_of_birth":"01/05/1992"},{"id":7470353,"first_name":"virat","middle_name":"k","last_name":"kohli","date_of_birth":"05/11/85"},{"id":7470351,"first_name":"santhosh","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470350,"first_name":"santhosh","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470349,"first_name":"santhosh","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470348,"first_name":"santhos","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470347,"first_name":"santhos","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470346,"first_name":"santhos","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470345,"first_name":"santhos","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470344,"first_name":"santhos","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470343,"first_name":"santhos","middle_name":"k","last_name":"ramaraju","date_of_birth":"20-09-2000"},{"id":7470342,"first_name":"santhos","middle_name":"k","last_name":"ramaraj","date_of_birth":"20-09-2000"},{"id":7470341,"first_name":"santhos","middle_name":"k","last_name":"ramaraj","date_of_birth":"20-09-2000"},{"id":7470340,"first_name":"santhos","middle_name":"k","last_name":"ramaraj","date_of_birth":"20-09-2000"},{"id":7470339,"first_name":"Test","middle_name":"Manuel","last_name":"Jared","date_of_birth":"01/05/1996"},{"id":7470338,"first_name":"George","middle_name":"Manuel","last_name":"Jared","date_of_birth":"01/05/1986"},{"id":7470337,"first_name":"Mark","middle_name":"Luis","last_name":"Jared","date_of_birth":"01/05/1986"},{"id":7470336,"first_name":"Mark","middle_name":"Luis","last_name":"Jared","date_of_birth":"01/05/1986"},{"id":7470335,"first_name":"Testing","middle_name":"A","last_name":"World date_of_birth=12/12/1990","date_of_birth":null},{"id":7470334,"first_name":"Corey","middle_name":"Ava","last_name":"Hadid","date_of_birth":"11/11/2000"},{"id":7470333,"first_name":"Natalia","middle_name":"Not-Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470332,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470331,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470330,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470329,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470328,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470327,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470326,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470325,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470324,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470323,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470322,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470321,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470320,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470319,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470318,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470317,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470316,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470315,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470314,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4-05-1989"},{"id":7470313,"first_name":"Natalia","middle_name":"Crazy","last_name":"Beregoi","date_of_birth":"4... (set the log level to DEBUG or TRACE to see the full content) 
  </msg>
-<msg timestamp="20230503 16:17:51.347" level="INFO">/Users/allard/miniconda3/envs/testing/lib/python3.8/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'thetestingworldapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20230504 10:23:39.369" level="INFO">C:\Users\allard.quek\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'thetestingworldapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20230503 16:17:51.347" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230503 16:17:51.067" endtime="20230503 16:17:51.347"/>
+<msg timestamp="20230504 10:23:39.370" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230504 10:23:38.995" endtime="20230504 10:23:39.370"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230504 10:23:39.372" endtime="20230504 10:23:39.373"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${json_response}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230503 16:17:51.348" level="INFO">${json_response} = {'status': 'true', 'data': {'id': 7470352, 'first_name': 'Luis', 'middle_name': 'Paredo', 'last_name': 'Jared', 'date_of_birth': '01/05/1996'}}</msg>
-<status status="PASS" starttime="20230503 16:17:51.347" endtime="20230503 16:17:51.348"/>
+<msg timestamp="20230504 10:23:39.374" level="INFO">${json_response} = [{'id': 7470409, 'first_name': 'tưsting', 'middle_name': 'a', 'last_name': 'eorld', 'date_of_birth': '25/04/1990'}, {'id': 7470408, 'first_name': 'PulidoRodriguez', 'middle_name': 'A', 'last_name': 'W...</msg>
+<status status="PASS" starttime="20230504 10:23:39.373" endtime="20230504 10:23:39.374"/>
 </kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>@{first_name_data}</var>
-<arg>${json_response}</arg>
-<arg>data.first_name</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20230503 16:17:51.380" level="INFO">@{first_name_data} = [ Luis ]</msg>
-<status status="PASS" starttime="20230503 16:17:51.348" endtime="20230503 16:17:51.380"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230503 16:17:51.380" endtime="20230503 16:17:51.380"/>
+<kw name="Set Variable" library="BuiltIn">
+<var>${first_user_data}</var>
+<arg>${json_response[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230504 10:23:39.376" level="INFO">${first_user_data} = {'id': 7470409, 'first_name': 'tưsting', 'middle_name': 'a', 'last_name': 'eorld', 'date_of_birth': '25/04/1990'}</msg>
+<status status="PASS" starttime="20230504 10:23:39.375" endtime="20230504 10:23:39.376"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
+<arg>${first_user_data}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230503 16:17:51.380" endtime="20230503 16:17:51.381"/>
+<status status="PASS" starttime="20230504 10:23:39.376" endtime="20230504 10:23:39.377"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${first_name_data}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230503 16:17:51.381" endtime="20230503 16:17:51.381"/>
-</kw>
-<kw name="Get From List" library="Collections">
-<var>${f_name}</var>
-<arg>${first_name_data}</arg>
-<arg>0</arg>
-<doc>Returns the value specified with an ``index`` from ``list``.</doc>
-<msg timestamp="20230503 16:17:51.381" level="INFO">${f_name} = Luis</msg>
-<status status="PASS" starttime="20230503 16:17:51.381" endtime="20230503 16:17:51.381"/>
+<kw name="Set Variable" library="BuiltIn">
+<var>${last_name}</var>
+<arg>${first_user_data['last_name']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230504 10:23:39.378" level="INFO">${last_name} = eorld</msg>
+<status status="PASS" starttime="20230504 10:23:39.377" endtime="20230504 10:23:39.378"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
-<arg>${f_name}</arg>
-<arg>Luis</arg>
+<arg>${last_name}</arg>
+<arg>eorld</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20230503 16:17:51.381" endtime="20230503 16:17:51.381"/>
+<status status="PASS" starttime="20230504 10:23:39.378" endtime="20230504 10:23:39.379"/>
 </kw>
-<status status="PASS" starttime="20230503 16:17:51.067" endtime="20230503 16:17:51.381"/>
+<status status="PASS" starttime="20230504 10:23:38.993" endtime="20230504 10:23:39.379"/>
 </test>
 <doc>Simple example using SeleniumLibrary</doc>
-<status status="PASS" starttime="20230503 16:17:50.934" endtime="20230503 16:17:51.381"/>
+<status status="PASS" starttime="20230504 10:23:34.703" endtime="20230504 10:23:39.381"/>
 </suite>
-<status status="PASS" starttime="20230503 16:17:50.933" endtime="20230503 16:17:51.382"/>
+<status status="PASS" starttime="20230504 10:23:34.674" endtime="20230504 10:23:39.383"/>
 </suite>
-<status status="PASS" starttime="20230503 16:17:50.924" endtime="20230503 16:17:51.382"/>
+<status status="PASS" starttime="20230504 10:23:34.512" endtime="20230504 10:23:39.384"/>
 </suite>
 <statistics>
 <total>
@@ -91,9 +84,9 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Accenture-Testing">Accenture-Testing</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Accenture-Testing.Tests</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Api Sample Test">Accenture-Testing.Tests.Api Sample Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Automation-Testing">Automation-Testing</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Automation-Testing.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Api Sample Test">Automation-Testing.Tests.Api Sample Test</stat>
 </suite>
 </statistics>
 <errors>
