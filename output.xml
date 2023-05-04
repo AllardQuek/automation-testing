@@ -1,99 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.8.16 on darwin)" generated="20230504 13:08:54.292" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.8.16 on darwin)" generated="20230504 15:58:04.015" rpa="false" schemaversion="3">
 <suite id="s1" name="Accenture-Testing" source="/Users/allard/Desktop/accenture-testing">
 <suite id="s1-s1" name="Tests" source="/Users/allard/Desktop/accenture-testing/tests">
 <suite id="s1-s1-s1" name="Api" source="/Users/allard/Desktop/accenture-testing/tests/api">
-<suite id="s1-s1-s1-s1" name="Api Post Test" source="/Users/allard/Desktop/accenture-testing/tests/api/api_post_test.robot">
-<test id="s1-s1-s1-s1-t1" name="POST Request Test" line="11">
+<suite id="s1-s1-s1-s1" name="Api Mock Test V2" source="/Users/allard/Desktop/accenture-testing/tests/api/api_mock_test_v2.robot">
+<kw name="Create Sessions" type="SETUP">
 <kw name="Create Session" library="RequestsLibrary">
-<arg>POST_test</arg>
-<arg>${BASE_URL}</arg>
+<arg>server</arg>
+<arg>${MOCK_URL}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230504 13:08:54.389" level="INFO">Creating Session using : alias=POST_test, url=https://thetestingworldapi.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230504 13:08:54.388" endtime="20230504 13:08:54.389"/>
+<msg timestamp="20230504 15:58:04.102" level="INFO">Creating Session using : alias=server, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230504 15:58:04.102" endtime="20230504 15:58:04.103"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${body}</var>
-<arg>first_name=John</arg>
-<arg>middle_name=Jane</arg>
-<arg>last_name=Doe</arg>
-<arg>date_of_birth=5/4/2023</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230504 13:08:54.389" level="INFO">${body} = {'first_name': 'John', 'middle_name': 'Jane', 'last_name': 'Doe', 'date_of_birth': '5/4/2023'}</msg>
-<status status="PASS" starttime="20230504 13:08:54.389" endtime="20230504 13:08:54.389"/>
+<kw name="Create Mock Session" library="MockServerLibrary">
+<arg>${MOCK_URL}</arg>
+<doc>Creates an HTTP session towards mockserver.</doc>
+<status status="PASS" starttime="20230504 15:58:04.103" endtime="20230504 15:58:04.103"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230504 13:08:54.389" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20230504 13:08:54.389" endtime="20230504 13:08:54.389"/>
+<status status="PASS" starttime="20230504 15:58:04.102" endtime="20230504 15:58:04.103"/>
 </kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>POST_test</arg>
-<arg>url=/api/studentsDetails/</arg>
-<arg>json=${body}</arg>
-<arg>headers=${header}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20230504 13:08:54.845" level="INFO">POST Request : url=https://thetestingworldapi.com/api/studentsDetails/ 
- path_url=/api/studentsDetails/ 
- headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '94'} 
- body=b'{"first_name": "John", "middle_name": "Jane", "last_name": "Doe", "date_of_birth": "5/4/2023"}' 
- </msg>
-<msg timestamp="20230504 13:08:54.845" level="INFO">POST Response : url=https://thetestingworldapi.com/api/studentsDetails/ 
- status=201, reason=Created 
- headers={'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Content-Type': 'application/json; charset=utf-8', 'Expires': '-1', 'Location': 'https://thetestingworldapi.com/api/studentsDetails/7470441', 'Server': 'Microsoft-IIS/10.0', 'X-AspNet-Version': '4.0.30319', 'X-Powered-By': 'ASP.NET', 'X-Powered-By-Plesk': 'PleskWin', 'Date': 'Thu, 04 May 2023 05:08:54 GMT', 'Content-Length': '100'} 
- body={"id":7470441,"first_name":"John","middle_name":"Jane","last_name":"Doe","date_of_birth":"5/4/2023"} 
- </msg>
-<msg timestamp="20230504 13:08:54.846" level="INFO">/Users/allard/miniconda3/envs/testing/lib/python3.8/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'thetestingworldapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20230504 13:08:54.846" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20230504 13:08:54.389" endtime="20230504 13:08:54.846"/>
+<test id="s1-s1-s1-s1-t1" name="Success On Expected GET" line="16">
+<kw name="Create Mock Request Matcher" library="MockServerLibrary">
+<var>&amp;{req}</var>
+<arg>GET</arg>
+<arg>${ENDPOINT}</arg>
+<doc>Creates a mock request matcher to be used by mockserver.</doc>
+<msg timestamp="20230504 15:58:04.103" level="INFO">&amp;{req} = { method=GET | path=/todos/1 }</msg>
+<status status="PASS" starttime="20230504 15:58:04.103" endtime="20230504 15:58:04.103"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230504 13:08:54.848" level="INFO">${status_code} = 201</msg>
-<status status="PASS" starttime="20230504 13:08:54.847" endtime="20230504 13:08:54.848"/>
+<kw name="Create Mock Response" library="MockServerLibrary">
+<var>&amp;{rsp}</var>
+<arg>status_code=200</arg>
+<doc>Creates a mock response to be used by mockserver.</doc>
+<msg timestamp="20230504 15:58:04.103" level="INFO">&amp;{rsp} = { statusCode=200 }</msg>
+<status status="PASS" starttime="20230504 15:58:04.103" endtime="20230504 15:58:04.103"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
+<arg>Request is ${req}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230504 13:08:54.849" endtime="20230504 13:08:54.849"/>
+<status status="PASS" starttime="20230504 15:58:04.103" endtime="20230504 15:58:04.103"/>
 </kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>201</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<msg timestamp="20230504 13:08:54.850" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20230504 13:08:54.850" endtime="20230504 13:08:54.850"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response is ${rsp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230504 15:58:04.103" endtime="20230504 15:58:04.103"/>
 </kw>
-<status status="PASS" starttime="20230504 13:08:54.388" endtime="20230504 13:08:54.850"/>
+<kw name="Create Mock Expectation" library="MockServerLibrary">
+<arg>${req}</arg>
+<arg>${rsp}</arg>
+<doc>Creates a mock expectation to be used by mockserver.</doc>
+<msg timestamp="20230504 15:58:04.821" level="FAIL">Mock server failed with 404: {}</msg>
+<status status="FAIL" starttime="20230504 15:58:04.103" endtime="20230504 15:58:04.823"/>
+</kw>
+<kw name="Send GET Expect Success">
+<arg>${ENDPOINT}</arg>
+<status status="NOT RUN" starttime="20230504 15:58:04.823" endtime="20230504 15:58:04.824"/>
+</kw>
+<kw name="Reset Mock Server" type="TEARDOWN">
+<kw name="Dump To Log" library="MockServerLibrary">
+<doc>Dumps logs at the mockserver.</doc>
+<status status="PASS" starttime="20230504 15:58:04.825" endtime="20230504 15:58:04.825"/>
+</kw>
+<kw name="Reset All Requests" library="MockServerLibrary">
+<doc>Clears all expectations and received requests from the mockserver.</doc>
+<msg timestamp="20230504 15:58:05.437" level="FAIL">Mock server failed with 404: {}</msg>
+<status status="FAIL" starttime="20230504 15:58:04.825" endtime="20230504 15:58:05.438"/>
+</kw>
+<status status="FAIL" starttime="20230504 15:58:04.824" endtime="20230504 15:58:05.438">Mock server failed with 404: {}</status>
+</kw>
+<status status="FAIL" starttime="20230504 15:58:04.103" endtime="20230504 15:58:05.439">Mock server failed with 404: {}
+
+Also teardown failed:
+Mock server failed with 404: {}</status>
 </test>
-<doc>POST Request Example using RequestsLibrary</doc>
-<status status="PASS" starttime="20230504 13:08:54.307" endtime="20230504 13:08:54.851"/>
+<status status="FAIL" starttime="20230504 15:58:04.024" endtime="20230504 15:58:05.440"/>
 </suite>
-<status status="PASS" starttime="20230504 13:08:54.305" endtime="20230504 13:08:54.852"/>
+<status status="FAIL" starttime="20230504 15:58:04.024" endtime="20230504 15:58:05.441"/>
 </suite>
-<status status="PASS" starttime="20230504 13:08:54.303" endtime="20230504 13:08:54.853"/>
+<status status="FAIL" starttime="20230504 15:58:04.023" endtime="20230504 15:58:05.442"/>
 </suite>
-<status status="PASS" starttime="20230504 13:08:54.292" endtime="20230504 13:08:54.854"/>
+<status status="FAIL" starttime="20230504 15:58:04.016" endtime="20230504 15:58:05.444"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Accenture-Testing">Accenture-Testing</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Accenture-Testing.Tests</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Api">Accenture-Testing.Tests.Api</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1-s1" name="Api Post Test">Accenture-Testing.Tests.Api.Api Post Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Accenture-Testing">Accenture-Testing</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Tests">Accenture-Testing.Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Api">Accenture-Testing.Tests.Api</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1-s1" name="Api Mock Test V2">Accenture-Testing.Tests.Api.Api Mock Test V2</stat>
 </suite>
 </statistics>
 <errors>
