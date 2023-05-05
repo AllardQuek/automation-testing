@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Rebot 6.0.2 (Python 3.8.16 on darwin)" generated="20230505 18:21:01.715" rpa="false" schemaversion="3">
+<robot generator="Rebot 6.0.2 (Python 3.8.16 on darwin)" generated="20230505 21:41:22.886" rpa="false" schemaversion="3">
 <suite id="s1" name="Ios Web Test" source="/Users/allard/Desktop/accenture-testing/tests/pcloudy/ios_web_test.robot">
 <test id="s1-t1" name="Open Browser" line="5">
 <kw name="Open Application" library="AppiumLibrary">
@@ -7,7 +7,7 @@
 <arg>pCloudy_Username=axq54@case.edu</arg>
 <arg>pCloudy_ApiKey=hvpbgzvsypdryv7kd9t77sm3</arg>
 <arg>platformName=iOS</arg>
-<arg>pCloudy_DeviceManafacturer=Apple</arg>
+<arg>pCloudy_DeviceFullName=APPLE_iPadAir5_iOS_15.6.1_2ae29</arg>
 <arg>browserName=${browserName}</arg>
 <arg>automationName=${automationName}</arg>
 <doc>Opens a new application to given Appium server.
@@ -17,50 +17,50 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |
 | strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" starttime="20230505 18:20:20.476" endtime="20230505 18:20:57.577"/>
+<status status="PASS" starttime="20230505 21:39:41.459" endtime="20230505 21:41:18.825"/>
 </kw>
-<status status="PASS" starttime="20230505 18:20:20.476" endtime="20230505 18:20:57.578"/>
+<status status="PASS" starttime="20230505 21:39:41.459" endtime="20230505 21:41:18.826"/>
 </test>
-<test id="s1-t2" name="Navigate To Url" line="8">
+<test id="s1-t2" name="Navigate To Url" line="9">
 <kw name="Go To Url" library="AppiumLibrary">
 <arg>https://www.google.com</arg>
 <doc>Opens URL in default web browser.</doc>
-<status status="PASS" starttime="20230505 18:20:57.580" endtime="20230505 18:20:59.311"/>
+<status status="PASS" starttime="20230505 21:41:18.828" endtime="20230505 21:41:20.533"/>
 </kw>
 <kw name="Input Text" library="AppiumLibrary">
 <arg>name=q</arg>
 <arg>pcloudy</arg>
 <doc>Types the given `text` into text field identified by `locator`.</doc>
-<msg timestamp="20230505 18:20:59.317" level="INFO">Typing text 'pcloudy' into text field 'name=q'</msg>
-<status status="PASS" starttime="20230505 18:20:59.312" endtime="20230505 18:20:59.773"/>
+<msg timestamp="20230505 21:41:20.539" level="INFO">Typing text 'pcloudy' into text field 'name=q'</msg>
+<status status="PASS" starttime="20230505 21:41:20.534" endtime="20230505 21:41:20.983"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Text is input in search box</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230505 18:20:59.774" endtime="20230505 18:20:59.775"/>
+<status status="PASS" starttime="20230505 21:41:20.984" endtime="20230505 21:41:20.985"/>
 </kw>
 <kw name="Click Element" library="AppiumLibrary">
 <arg>name=btnK</arg>
 <doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230505 18:20:59.779" level="INFO">Clicking element 'name=btnK'.</msg>
-<status status="PASS" starttime="20230505 18:20:59.776" endtime="20230505 18:21:00.138"/>
+<msg timestamp="20230505 21:41:20.990" level="INFO">Clicking element 'name=btnK'.</msg>
+<status status="PASS" starttime="20230505 21:41:20.985" endtime="20230505 21:41:21.288"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Clicked on google search icon</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230505 18:21:00.139" endtime="20230505 18:21:00.140"/>
+<status status="PASS" starttime="20230505 21:41:21.289" endtime="20230505 21:41:21.290"/>
 </kw>
-<status status="PASS" starttime="20230505 18:20:57.579" endtime="20230505 18:21:00.141"/>
+<status status="PASS" starttime="20230505 21:41:18.827" endtime="20230505 21:41:21.291"/>
 </test>
-<test id="s1-t3" name="Close All Apps" line="16">
+<test id="s1-t3" name="Close All Apps" line="17">
 <kw name="Close All Applications" library="AppiumLibrary">
 <doc>Closes all open applications.</doc>
-<status status="PASS" starttime="20230505 18:21:00.142" endtime="20230505 18:21:01.464"/>
+<status status="PASS" starttime="20230505 21:41:21.293" endtime="20230505 21:41:22.576"/>
 </kw>
-<status status="PASS" starttime="20230505 18:21:00.142" endtime="20230505 18:21:01.465"/>
+<status status="PASS" starttime="20230505 21:41:21.292" endtime="20230505 21:41:22.577"/>
 </test>
 <doc>[https://pabot.org/?ref=log|Pabot] result from 1 executions.</doc>
-<status status="PASS" starttime="20230505 18:20:20.290" endtime="20230505 18:21:01.713"/>
+<status status="PASS" starttime="20230505 21:39:41.284" endtime="20230505 21:41:22.883"/>
 </suite>
 <statistics>
 <total>
